@@ -1,0 +1,49 @@
+$color-border: 1px solid #cccccc;
+
+*{
+  font-family: Arial;
+}
+a{
+  text-decoration: none;
+}
+
+body{
+  margin:8px 0 0 0 ;
+}
+img{
+  display: block;
+}
+@mixin width-tab-item($width){
+ .tab-item{
+   width: $width;
+ }
+}
+#bam{
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+@mixin tab-list($justify-content){
+  .tab-list{
+    display: flex;
+    justify-content: $justify-content;
+
+
+  }
+
+}
+@mixin limitTextLine($line){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $line;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+@mixin setTextSizeColor($size,$color,$font,$weight){
+  font-size: $size#{px};
+  font-family:$font;
+  color: $color;
+  font-weight: $weight;
+}
