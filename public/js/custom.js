@@ -28,32 +28,34 @@ $(document).ready(function(){
             console.log('rm 2');
         }
     });
-
+    console.log('run js');
 
     window.addEventListener('load', function(){
-        var mouseTimer;
-        function mouseDown() {
-            mouseUp();
-            mouseTimer = window.setTimeout(execMouseDown,2000); //set timeout to fire in 2 seconds when the user presses mouse button down
-        }
-
-        function mouseUp() {
-            if (mouseTimer) {
-                console.log('clear event');
-                window.clearTimeout(mouseTimer);
-            } //cancel timer when mouse button is released
-            div.style.backgroundColor = "#FFFFFF";
-        }
-
-        function execMouseDown() {
-            div.style.backgroundColor = "#CFCF00";
-        }
-
-        var div = document.getElementById("bam");
-        div.addEventListener("mousedown", mouseDown);
-        document.body.addEventListener("mouseup", function(){
-            console.log('click body')
-        });
+        console.log('load');
+        // var mouseTimer;
+        // function mouseDown() {
+        //     mouseUp();
+        //     mouseTimer = window.setTimeout(execMouseDown,2000); //set timeout to fire in 2 seconds when the user presses mouse button down
+        // }
+        //
+        // function mouseUp() {
+        //     if (mouseTimer) {
+        //         console.log('clear event');
+        //         window.clearTimeout(mouseTimer);
+        //     } //cancel timer when mouse button is released
+        //     div.style.backgroundColor = "black";
+        // }
+        //
+        // function execMouseDown() {
+        //     div.style.backgroundColor = "#CFCF00";
+        // }
+        //
+        // var div = document.getElementById("bam");
+        // div.addEventListener("mousedown", mouseDown);
+        // document.body.addEventListener("mouseup", function(){
+        //     mouseUp();
+        //     console.log('click body')
+        // });
 
         // window.addEventListener('touch', function() {
         //     console.log('asdf');
@@ -65,29 +67,58 @@ $(document).ready(function(){
         // var startx = 0
         // var dist = 0
         //
-        // box1.addEventListener('touches', function(e){
-        //     console.log('touchcancel');
-        //     var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
-        //     startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
-        //     statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
-        //     e.preventDefault()
-        // }, false)
-        //
-        // box1.addEventListener('touchmove', function(e){
-        //     console.log('touchmove');
-        //     var touchobj = e.changedTouches[0] // reference first touch point for this event
-        //     var dist = parseInt(touchobj.clientX) - startx
-        //     statusdiv.innerHTML = 'Status: touchmove<br> Horizontal distance traveled: ' + dist + 'px'
-        //     e.preventDefault()
-        // }, false)
-        //
-        // box1.addEventListener('touchend', function(e){
-        //     console.log('touchend');
-        //     var touchobj = e.changedTouches[0] // reference first touch point for this event
-        //     statusdiv.innerHTML = 'Status: touchend<br> Resting x coordinate: ' + touchobj.clientX + 'px'
-        //     e.preventDefault()
-        // }, false)
+        var box1 = document.getElementById("bam");
+        var touchEvent;
+        var statusHold = false;
+        function touchHold(){
+            clearEvent();
+            touchEvent = window.setTimeout(actionHold,2000);
+        }
+        function actionHold() {
+            statusHold=true;
+            box1.style.backgroundColor = "#CFCF00";
+        }
 
+        function clearEvent() {
+            if (touchEvent) {
+                console.log('clear event');
+                window.clearTimeout(touchEvent);
+            } //cancel timer when mouse button is released
+            box1.style.backgroundColor = "black";
+        }
+
+
+        box1.addEventListener('touchstart', function(e){
+            touchHold();
+            console.log('touchstart');
+            $('#text').html('<h1>sdfgdfg</h1>');
+            // var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
+            // startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
+            // statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
+            // e.preventDefault()
+        }, false)
+        //
+        box1.addEventListener('touchmove', function(e){
+
+            console.log(e);
+
+        }, false)
+        //
+        box1.addEventListener('touchend', function(e){
+            if(statusHold===false) {
+                clearEvent();
+                // console.log(e);
+                console.log('touchend');
+            }
+        }, false)
+        var body = document.getElementById('body');
+        body.addEventListener('touchend', function(e){
+            if(statusHold===false) {
+                clearEvent();
+                console.log(e);
+                console.log('body');
+            }
+        }, false)
     }, false)
 });
 
