@@ -28,54 +28,18 @@ $(document).ready(function(){
             console.log('rm 2');
         }
     });
-    console.log('run js');
-
-    window.addEventListener('load', function(){
-        console.log('load');
-        // var mouseTimer;
-        // function mouseDown() {
-        //     mouseUp();
-        //     mouseTimer = window.setTimeout(execMouseDown,2000); //set timeout to fire in 2 seconds when the user presses mouse button down
-        // }
-        //
-        // function mouseUp() {
-        //     if (mouseTimer) {
-        //         console.log('clear event');
-        //         window.clearTimeout(mouseTimer);
-        //     } //cancel timer when mouse button is released
-        //     div.style.backgroundColor = "black";
-        // }
-        //
-        // function execMouseDown() {
-        //     div.style.backgroundColor = "#CFCF00";
-        // }
-        //
-        // var div = document.getElementById("bam");
-        // div.addEventListener("mousedown", mouseDown);
-        // document.body.addEventListener("mouseup", function(){
-        //     mouseUp();
-        //     console.log('click body')
-        // });
-
-        // window.addEventListener('touch', function() {
-        //     console.log('asdf');
-        // });
-        //
-        //
-        // var box1 = document.getElementById('box1')
-        // var statusdiv = document.getElementById('statusdiv')
-        // var startx = 0
-        // var dist = 0
-        //
-        var box1 = document.getElementById("bam");
+        var box1 = document.getElementsByClassName("touch-item");
         var touchEvent;
         var statusHold = false;
         function touchHold(){
-            clearEvent();
-            touchEvent = window.setTimeout(actionHold,2000);
+            if(statusHold===false) {
+                clearEvent();
+                touchEvent = window.setTimeout(actionHold, 1000);
+            }
         }
         function actionHold() {
             statusHold=true;
+            console.log('status:'+statusHold);
             box1.style.backgroundColor = "#CFCF00";
         }
 
@@ -89,20 +53,17 @@ $(document).ready(function(){
 
 
         box1.addEventListener('touchstart', function(e){
+            // alert('demo alert');
             touchHold();
             console.log('touchstart');
             $('#text').html('<h1>sdfgdfg</h1>');
-            // var touchobj = e.changedTouches[0] // reference first touch point (ie: first finger)
-            // startx = parseInt(touchobj.clientX) // get x position of touch point relative to left edge of browser
-            // statusdiv.innerHTML = 'Status: touchstart<br> ClientX: ' + startx + 'px'
-            // e.preventDefault()
-        }, false)
+        }, false);
         //
         box1.addEventListener('touchmove', function(e){
 
             console.log(e);
 
-        }, false)
+        }, false);
         //
         box1.addEventListener('touchend', function(e){
             if(statusHold===false) {
@@ -110,15 +71,15 @@ $(document).ready(function(){
                 // console.log(e);
                 console.log('touchend');
             }
-        }, false)
+        }, false);
         var body = document.getElementById('body');
         body.addEventListener('touchend', function(e){
-            if(statusHold===false) {
+            if(e.target.className!=='active-event'){
                 clearEvent();
-                console.log(e);
-                console.log('body');
+                statusHold=false;
+
+                console.log('status:'+statusHold);
             }
-        }, false)
-    }, false)
+        }, false);
 });
 
