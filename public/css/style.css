@@ -185,8 +185,8 @@ img {
               margin-bottom: 10px; }
             .main .pro-content-main .list-item .type-1 .item .content-touch .list-icon .item-icon:nth-child(3) {
               background-color: white; }
-        .main .pro-content-main .list-item .type-1 .item .active-content-touch {
-          display: block; }
+      .main .pro-content-main .list-item .type-1 .active-content-touch .content-touch {
+        display: block; }
       .main .pro-content-main .list-item .type-1 .item:nth-child(2n-1) {
         border-bottom: 1px solid #cccccc;
         border-right: 1px solid #cccccc; }
@@ -312,6 +312,8 @@ img {
             background-color: white; }
       .main .pro-content-main .list-item .type-2 .item .active-content-touch {
         display: block; }
+    .main .pro-content-main .list-item .type-2 .active-content-touch .content-touch {
+      display: block; }
   .main .pro-content-main .active-tab {
     display: block; } }
 #box1 {

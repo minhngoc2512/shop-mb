@@ -210,10 +210,11 @@
                 }
               }
             }
-            .active-content-touch{
-              display: block;
-            }
 
+
+          }
+          .active-content-touch .content-touch{
+            display: block;
           }
           .item:nth-child(2n-1) {
             border-bottom: $color-border;
@@ -223,7 +224,7 @@
             border-bottom: $color-border;
           }
         }
-        .type-2 .item {
+        .type-2 {.item {
           position: relative;
           width: 100%;
           border-bottom: $color-border;
@@ -357,6 +358,10 @@
             }
           }
           .active-content-touch{
+            display: block;
+          }
+        }
+          .active-content-touch .content-touch{
             display: block;
           }
         }
