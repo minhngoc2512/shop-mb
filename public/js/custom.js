@@ -39,6 +39,7 @@ $(document).ready(function () {
 
     function actionHold() {
         statusHold = true;
+        console.log('added active');
         item_action.target.offsetParent.classList.add('active-content-touch');
         clearEvent();
     }
@@ -57,9 +58,11 @@ $(document).ready(function () {
             if(element.contains('active-content-touch')){
                 return;
             }else{
+                console.log('adding active');
                 var item_touch_old = $('.touch-item');
                 if(item_touch_old.hasClass('active-content-touch')){
                     item_touch_old.removeClass('active-content-touch');
+                   console.log('remove active');
                     statusHold = false;
                 }
                 item_action = e;
@@ -69,11 +72,18 @@ $(document).ready(function () {
 
         }, false);
         element.addEventListener('touchend', function (e) {
+            $('.des-touch').css('display','none');
             clearEvent();
             var element = e.target.offsetParent.classList;
             if(element.contains('active-content-touch')){
             }
         }, false);
     }
-});
 
+});
+function buttonClose(){
+    $('.des-touch').css('display','none');
+}
+function backTopScreen(){
+    window.scrollTo(0,0);
+}
